@@ -1,0 +1,148 @@
+
+<!-- #BODY MASS INDEX FINDER -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS BMI Calculator</title>
+</head>
+<body>
+    <h1 id="head"></h1>
+    <div id="div"></div>
+    <div>
+    <label id="label1" for="weight">Weight:</label>
+    <input type="text" name="weight" id="weight" placeholder="Enter weight in KGS"></div>
+    <br>
+    <div>
+    <label id="label2" for="height">Height:</label>
+    <input  type="text", name="height", id="height" placeholder="Enter Height in CMS"></div><br> 
+        <div>
+    <button id="button">Calculate</button></div>
+        <div id="result"></div>
+
+    <script>
+        document.body.style.fontFamily = "'Roboto', sans-serif";
+        let div = document.getElementById("div")
+        div.style.width = "400px"
+        div.style.margin = "150px 300px"
+        div.style.backgroundColor = "cyan"
+        div.style.borderRadius = "10px"
+        div.style.paddingLeft ="30px"
+        div.style.padding ="20px"
+        
+        let head = document.getElementById("head")
+        head.textContent = "BMI Calculator";
+        head.style.textAlign ="center"
+
+        div.append(head);
+
+                let div2 = document.createElement("div")
+                div2.style.height ="3px"
+                div2.style.width ="440px"
+                div2.style.backgroundColor="red"
+                div2.style.position="relative"
+                div2.style.right="20px"
+                div2.style.top="-20px"
+                div.append(div2)
+
+        let label1 = document.getElementById("label1")
+        label1.style.marginRight = "10px"; 
+        label1.style.color= "brown"
+        let weight1= document.getElementById("weight") 
+        weight1.style.borderRadius = "5px"
+                div.append(label1,weight1);
+                let br = document.createElement("br")
+                div .append(br)
+                 let br1 = document.createElement("br")
+                div .append(br1)
+
+                  let label2 = document.getElementById("label2")
+                  label2.style.marginRight = "12.5px"; 
+        let height2= document.getElementById("height")
+         height2.style.borderRadius = "5px"
+         const style = document.createElement("style");
+            style.textContent = `
+            #height::placeholder {
+                color: brown;
+                font-style: Papyrus;
+                font-size: 12px;
+            }
+            `;
+document.head.appendChild(style);
+
+                div.append(label2,height2);
+                let br3 = document.createElement("br")
+                div .append(br3)
+                 let br4 = document.createElement("br")
+                div .append(br4)
+                 let br5 = document.createElement("br")
+                div .append(br5)
+
+
+
+                let btn = document.getElementById("button")
+                btn.style.position = "relative"
+                btn.style.left = "160px"
+                btn.style.bottom = "20px"
+                btn.style.borderRadius= "5px"
+                btn.style.backgroundColor = "green"
+
+                div.append(btn)
+
+        let weight = document.getElementById("weight");
+        let height = document.getElementById("height");
+        let button = document.getElementById("button");
+
+        let emobj = {};
+        
+        button.addEventListener("click", (event) =>{
+        emobj[`${weight.name}`] = weight.value;
+        emobj[`${height.name}`] = height.value;
+
+        let hght = height.value/100;
+        let height1 = hght * hght ;
+        let bmi = weight.value / height1;
+        
+       let result = document.getElementById("result");
+       result.textContent = `your bmi is =${bmi.toFixed(2)}`
+          result.style.height="30px"
+          result.style.textAlign="center"
+          result.style.fontFamily="sans-serif"
+          result.style.fontSize="20px"
+          result.style.borderRadius="10px"
+          result.style.color="white"
+          result.style.padding="5px"
+
+      
+                div.append(result)
+     
+    if (bmi < 18) {
+      //under weight
+    result.style.backgroundColor = "red"
+  console.log(bmi);
+} 
+else if (bmi >= 18 && bmi <= 25) {
+  //normal
+       result.style.backgroundColor = "green"
+  console.log(bmi);
+} 
+else {
+  // console.log("Overweight – BMI greater than 25");
+      result.style.backgroundColor = "yellow"
+       console.log(bmi);
+} 
+}
+    );
+
+         button.addEventListener(("Click"), (event) => {
+        console.log(weight/height)});
+
+
+        button.addEventListener("mouseover",(event) => {
+      event.target.style.backgroundColor = "red";
+      event.target.style.borderRadius = "10px";
+        }); 
+</script>
+</body>
+</html>
